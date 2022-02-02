@@ -4,6 +4,8 @@ Rails.application.routes.draw do
     resources :songs
     resources :users, only: [:show]
 
+    get "/me", to: "users#show"
+
     post "/login", to: "sessions#create"
     post "/logout", to: "sessions#destroy"
 
