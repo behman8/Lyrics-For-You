@@ -6,6 +6,7 @@ import SongsContainer from './Containers/SongsContainer';
 import SongShow from './Components/SongShow';
 import Login from './Components/Login';
 import Home from './Components/Home';
+import Signup from './Components/Signup';
 
 function App() {
 
@@ -39,6 +40,8 @@ function App() {
       <div>
         <NavBar/>
         <h2>Please login to view more!</h2>
+        {<Signup onLogin={setUser}/>}
+        <h3>Or</h3>
         {<Login onLogin={setUser} />}
         <main>
           <Routes>
