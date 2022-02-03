@@ -22,6 +22,12 @@ function App() {
     });
   }, []);
 
+  useEffect(() => {
+    fetch("/api/songs")
+      .then((resp) => resp.json())
+      .then(data => setSongs([...data]));
+  }, []);
+
   const addNewSong = (songData) => {
     let params = {...songData}
     fetch("/api/songs", {
@@ -38,7 +44,7 @@ function App() {
           return [...prev, songData]
       })
     })
-}
+  }
 
   if(user) {
     return (
@@ -46,11 +52,12 @@ function App() {
         <NavBar onLogout={setUser} user={user} />
         <main>
           <h2>Welcome, {user.username}!</h2>
+          <br/>
           <Routes>
-            <Route exact path="/songs" element={<SongsContainer user={user} />}></Route>
-            <Route exact path="/songs/:id" element={<SongShow />}></Route>
+            <Route exact path="/songs" element={<SongsContainer songs={songs} />}></Route>
+            <Route exact path="api/songs/:id" element={<SongShow songs={songs} />}></Route>
             <Route exact path="/songs/new" element={<SongForm addNewSong={addNewSong} />}></Route>
-            <Route exact path="/" element={<Home />}></Route>
+            <Route exact path="/" element={<Home songs={songs} user={user} />}></Route>
           </Routes>
         </main>
       </div>
@@ -63,8 +70,8 @@ function App() {
         <main>
           <Routes>
             <Route exact path="/login" element={<Login onLogin={setUser} />}></Route>
-            <Route exact path="/signup" element={<Signup />}></Route>
-            <Route exact path="/" element={<Home />}></Route>
+            <Route exact path="/signup" element={<Signup onLogin={setUser} />}></Route>
+            <Route exact path="/" element={<Home songs={songs} />}></Route>
           </Routes>
         </main>
       </div>
