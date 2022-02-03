@@ -22,7 +22,7 @@ function App() {
   if(user) {
     return (
       <div>
-        <NavBar/>
+        <NavBar onLogout={setUser} />
         <main>
           <h2>Welcome, {user.username}!</h2>
           <Routes>
@@ -38,9 +38,9 @@ function App() {
     return (
       <div>
         <NavBar/>
+        <h2>Please login to view more!</h2>
         {<Login onLogin={setUser} />}
         <main>
-          <h2>Please login to view more!</h2>
           <Routes>
             <Route exact path="/" element={<Home />}></Route>
           </Routes>
