@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Signup({ onLogin }) {
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [passwordConfirmation, setPasswordConfirmation] = useState("");
+    const navigate = useNavigate()
 
     function handleSubmit(event) {
         event.preventDefault();
@@ -21,6 +23,7 @@ function Signup({ onLogin }) {
         })
             .then((resp) => resp.json())
             .then(onLogin);
+            navigate('/')
     }
 
     return(

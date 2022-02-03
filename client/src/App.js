@@ -7,10 +7,12 @@ import SongShow from './Components/SongShow';
 import Login from './Components/Login';
 import Home from './Components/Home';
 import Signup from './Components/Signup';
+import SongForm from './Components/SongForm';
 
 function App() {
 
   const [user, setUser] = useState(null)
+  const [songs, setSongs] = useState([]);
 
   useEffect(() => {
     fetch("/api/me").then((resp) => {
@@ -20,16 +22,34 @@ function App() {
     });
   }, []);
 
+  const addNewSong = (songData) => {
+    let params = {...songData}
+    fetch("/api/songs", {
+      method: "POST",
+      headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(params)
+    })
+    .then((resp) => resp.json())
+    .then(songData => {
+      setSongs(prev => {
+          return [...prev, songData]
+      })
+    })
+}
+
   if(user) {
     return (
       <div>
-        <NavBar onLogout={setUser} />
+        <NavBar onLogout={setUser} user={user} />
         <main>
           <h2>Welcome, {user.username}!</h2>
           <Routes>
             <Route exact path="/songs" element={<SongsContainer user={user} />}></Route>
             <Route exact path="/songs/:id" element={<SongShow />}></Route>
-            <Route exact path="/login" element={<Login />}></Route>
+            <Route exact path="/songs/new" element={<SongForm addNewSong={addNewSong} />}></Route>
             <Route exact path="/" element={<Home />}></Route>
           </Routes>
         </main>
@@ -39,12 +59,11 @@ function App() {
     return (
       <div>
         <NavBar/>
-        <h2>Please login to view more!</h2>
-        {<Signup onLogin={setUser}/>}
-        <h3>Or</h3>
-        {<Login onLogin={setUser} />}
+        <h2>Please login or signup to view more!</h2>
         <main>
           <Routes>
+            <Route exact path="/login" element={<Login onLogin={setUser} />}></Route>
+            <Route exact path="/signup" element={<Signup />}></Route>
             <Route exact path="/" element={<Home />}></Route>
           </Routes>
         </main>
