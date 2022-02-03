@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 function NavBar({ onLogout }) {
     
     function handleLogout() {
-        fetch("/logout", {
+        fetch("/api/logout", {
             method: "DELETE",
         }).then(() => onLogout())
     }

@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 
-function NavBar() {
+function SongsContainer() {
 
     return(
         <div>
-            
+            <h1>Songs</h1>
         </div>
     )
 
 };
 
-export default NavBar;
+export default SongsContainer;

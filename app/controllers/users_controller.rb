@@ -9,10 +9,14 @@ class UsersController < ApplicationController
         end
     end
 
+    def index
+        users = User.all
+        render json: users
+    end
+
     def create
-        user = User.new(user_params)
-        if user.save
-            session[:user_id] = user.id
+        user = User.create(user_params)
+        if user.valid?
             render json: user, status: :created
         else
             render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
@@ -22,7 +26,7 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.require(:user).permit(:username, :password)
+        params.permit(:username, :password, :password_confirmation)
     end
 
 end

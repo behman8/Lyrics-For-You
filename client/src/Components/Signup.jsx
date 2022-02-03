@@ -8,7 +8,7 @@ function Signup({ onLogin }) {
 
     function handleSubmit(event) {
         event.preventDefault();
-        fetch("/signup", {
+        fetch("/api/signup", {
             method: "POST",
             headers: {
                 "Content-type": "application/json",
