@@ -15,7 +15,8 @@ Song.create([{
     lyrics: "You said 'what am I supposed to do?' Because I'm drowning in inches of water with you And what am I supposed to say? 'You know you're the reason I'm acting this way'And you weren't there when I was in over my head The room is spinning around again And I'm working on my ways because I haven't been very honest lately Can you keep me from falling asleep tonight? You're the only thing making me feel alright Skyscraper building falling down around me Can you keep me from falling asleep again? And falling too deep again You built a wall, and I tore it down You took a breath and stole the words out of my mouth But what I wanted to say, I was trying to fix this with everything, everything Can you keep me from falling asleep tonight? You're the only thing making me feel alright Skyscraper building falling down around me Can you keep me from falling asleep again? What are we supposed to do? We're still drowning in inches of water because of you What do you want me to say? I know what I did but I want you to stay Can you keep me from falling asleep tonight? You're the only thing making me feel alright Skyscraper building falling down around Me Can you keep me from falling asleep again? Can you keep me from falling asleep tonight? You're the only thing making me feel alright Skyscraper building falling down around me Can you keep me from falling asleep again? From falling asleep again? But I felt the pressure of water over my head You weren't there when I started to Sink again I know we're running out of time Right here, right now, you were holding on But I let go, yeah, I let go (Can you keep me from falling asleep tonight?) I know we're running out of time You said 'what am I supposed to do?' We're still drowning in inches of water because of you What do you want me to say? I know what I did but I really just want you to stay", 
     artist: "In Her Own Words", 
     time: 211, 
-    album: "Steady Glow"
+    album: "Steady Glow",
+    user_id: 1
 },
 {
     title: "Unrequited Love", 
@@ -101,7 +102,8 @@ Song.create([{
     Chasing unrequited love", 
     artist: "Valiant Hearts", 
     time: 310, 
-    album: "Yonder"
+    album: "Yonder",
+    user_id: 1
 },
 {
     title: "lvl99ROIDMAGE", 
@@ -143,7 +145,8 @@ Song.create([{
     Fading in and out of dreaming", 
     artist: "Bilmuri, Seneca", 
     time: 201, 
-    album: "400LB BACK SQUAT"
+    album: "400LB BACK SQUAT",
+    user_id: 1
 },
 {
     title: "new low", 
@@ -236,7 +239,8 @@ Song.create([{
     (Million other things)", 
     artist: "nightlife", 
     time: 296, 
-    album: "new low"
+    album: "new low",
+    user_id: 1
 }])
 
 puts "Songs seeded!"
