@@ -3,7 +3,7 @@ class UsersController < ApplicationController
     def show
         user = User.find_by(id: session[:user_id])
         if user
-            render json: user, status: :ok
+            render json: user, include: :songs, status: :ok
         else
             render json: { errors: "Not authorized."}, status: :unauthorized
         end
@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 
     def index
         users = User.all
-        render json: users
+        render json: users, include: :songs
     end
 
     def create

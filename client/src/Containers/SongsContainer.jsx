@@ -6,6 +6,7 @@ function SongsContainer({ songs }) {
     return(
         <div>
             <h1>Songs</h1>
+            <br/>
             {songs.map(song => <SongCard key={song.id} song={song} />)}
         </div>
     )

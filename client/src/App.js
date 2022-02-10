@@ -56,7 +56,7 @@ function App() {
           <Routes>
             <Route exact path="/songs" element={<SongsContainer songs={songs} />}></Route>
             <Route exact path="api/songs/:id" element={<SongShow songs={songs} />}></Route>
-            <Route exact path="/songs/new" element={<SongForm addNewSong={addNewSong} />}></Route>
+            <Route exact path="/songs/new" element={<SongForm addNewSong={addNewSong} user={user} />}></Route>
             <Route exact path="/" element={<Home songs={songs} user={user} />}></Route>
           </Routes>
         </main>

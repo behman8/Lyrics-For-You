@@ -22,7 +22,7 @@ function NavBar({ onLogout, user }) {
                             <div className="menu">
                                 <li className="link"><NavLink to="/">Home</NavLink></li>
                                 <li className="link"><NavLink to="/songs">Songs</NavLink></li>
-                                <li className="link"><NavLink to="/songs/new">Add New Song</NavLink></li>
+                                <li className="link"><NavLink to="/songs/new">Add Song</NavLink></li>
                                 <li className="link"><button onClick={handleLogout} className="logout-button" >Logout</button></li>
                             </div>
                         </ul>

@@ -8,6 +8,7 @@ function Home({ songs, user }) {
     return(
         <div>
             <h1>Home</h1>
+            <br/>
             {selectedSongs.map(song => <HomeCards key={song.id} song={song} user={user} />)}
         </div>
     )
