@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 
-function SongCard({ song }) {
+function SongCard({ song, user, addFavorite }) {
+
+    const [formData, setFormData] = useState({
+        user_id: user.id,
+        song_id: song.id
+    });
 
     return(
         <div>
@@ -14,6 +19,7 @@ function SongCard({ song }) {
             <h3>Album:</h3>
             <p>{song.album}</p>
             <br/>
+            <button id="favorite-button" type="submit" onClick={(e) => addFavorite(formData)} >❤️</button>
         </div>
     )
 
