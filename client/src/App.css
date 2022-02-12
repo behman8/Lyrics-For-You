@@ -17,8 +17,10 @@
   align-items: center;
   justify-content: space-between;
   padding: 20px;
-  background-color:	#8B4513;
+  background-color:	#696969;
   color: black;
+  border-style: outset;
+  border-color: #DC143C;
  }
 
  .all-links a{
@@ -31,9 +33,11 @@
  }
 
  .logo:hover{
-  background-color:	#A0522D;
+  background-color:	#DC143C;
   border-radius: 5px;
   transition: 0.3s ease;
+  border-style: outset;
+  border-color: #DC143C;
  }
 
  .menu {
@@ -43,15 +47,17 @@
  }
 
  .link:hover {
-  background-color:	#A0522D;
+  background-color:	#DC143C;
   border-radius: 5px;
   transition: 0.3s ease;
+  border-style: outset;
+  border-color: #DC143C;
  }
  .link {
   padding: 5px 14px;
  }
  .logout-button {
-   background-color: #8B4513;
+   background-color: #696969;
    border: none;
    color: black;
    font-family: 'Comfortaa', cursive;
@@ -59,7 +65,22 @@
    text-decoration: underline;
  }
  .logout-button:hover {
-   background-color: #A0522D;
+   background-color: #DC143C;
    border-radius: 5px;
   transition: 0.3s ease;
+ }
+ .login {
+   background-color: #696969;
+   border-style: outset;
+   border-color: #DC143C;
+   margin-right: 33%;
+   margin-left: 33%;
+   margin-top: 25%;
+   padding-top: 5%;
+   padding-bottom: 5%;
+ }
+
+ 
+ .headers {
+   margin: 10%;
  }

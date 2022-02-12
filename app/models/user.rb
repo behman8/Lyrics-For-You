@@ -4,4 +4,5 @@ class User < ApplicationRecord
     has_many :favorites
     has_many :songs, through: :favorites
     validates :username, presence: true, length: { minimum: 5 }, uniqueness: true
+    validates :password, presence: true
 end

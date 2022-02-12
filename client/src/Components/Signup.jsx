@@ -28,7 +28,7 @@ function Signup({ onLogin }) {
 
     return(
         <form onSubmit={handleSubmit}>
-            <h2>Signup!</h2>
+            <h2 className="headers">Signup!</h2>
             <label htmlFor="username">Username:</label>
             <input
                 type="text"
