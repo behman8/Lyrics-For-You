@@ -6,6 +6,7 @@ function Signup({ onLogin }) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [passwordConfirmation, setPasswordConfirmation] = useState("");
+    const [errors, setErrors] = useState("")
     const navigate = useNavigate()
 
     function handleSubmit(event) {
@@ -22,38 +23,52 @@ function Signup({ onLogin }) {
             }),
         })
             .then((resp) => resp.json())
-            .then(onLogin);
-            navigate('/')
+            .then((user) => user.errors ? setErrors(user.errors) : (onLogin(user), navigate('/')));
     }
 
     return(
-        <form onSubmit={handleSubmit}>
-            <h2 className="headers">Signup!</h2>
-            <label htmlFor="username">Username:</label>
-            <input
-                type="text"
-                id="username"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-            />
-            <br/>
-            <label htmlFor="password">Password:</label>
-            <input
-                type="password"
-                id="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-            />
-            <br/>
-            <label htmlFor="password_confirmation">Confirm Password:</label>
-            <input
-                type="password"
-                id="password_confirmation"
-                value={passwordConfirmation}
-                onChange={(e) => setPasswordConfirmation(e.target.value)}
-            />
-            <button type="submit">Submit</button>
-        </form>
+        <div className="login">
+            <div className="heading">
+                <h2 className="login-header">Signup!</h2>
+                <form onSubmit={handleSubmit}>
+                    <div className="input-group">
+                    <span className="input-group-addon"><i className="fa fa-user"></i></span>
+                    <input
+                        type="text"
+                        id="username"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                        placeholder="Username"
+                        className="form-control"
+                    />
+                    </div>
+                    <div className="input-group">
+                    <span className="input-group-addon"><i className="fa fa-user"></i></span>
+                    <input
+                        type="password"
+                        id="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        placeholder="Password"
+                        className="form-control"
+                    />
+                    </div>
+                    <div className="input-group">
+                    <span className="input-group-addon"><i className="fa fa-user"></i></span>
+                    <input
+                        type="password"
+                        id="password_confirmation"
+                        value={passwordConfirmation}
+                        onChange={(e) => setPasswordConfirmation(e.target.value)}
+                        placeholder="Confirm Password"
+                        className="form-control"
+                    />
+                    </div>
+                    <button type="submit" className="float">Submit</button>
+                    <p className="errors">{errors}</p>
+                </form>
+            </div>
+        </div>
     );
 
 };
