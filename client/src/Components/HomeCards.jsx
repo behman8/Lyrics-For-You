@@ -5,7 +5,7 @@ function HomeCards({ song, user }) {
 
     if(user) {
         return(
-            <div>
+            <div className="home-cards">
                 <h2>Title:</h2>
                 <NavLink to={`/api/songs/${song.id}`} ><p>{song.title}</p></NavLink>
                 <br/>
@@ -19,7 +19,7 @@ function HomeCards({ song, user }) {
         )
     } else {
         return(
-            <div>
+            <div className="home-cards">
                 <h2>Title:</h2>
                 <p>{song.title}</p>
                 <br/>

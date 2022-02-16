@@ -5,6 +5,7 @@ function Login({ onLogin }) {
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [errors, setErrors] = useState("")
     const navigate = useNavigate()
 
     function handleSubmit(e) {
@@ -18,31 +19,38 @@ function Login({ onLogin }) {
             }),
         })
             .then((resp) => resp.json())
-            .then((user) => onLogin(user))
-            navigate('/')
+            .then((user) => user.username ? (onLogin(user), navigate('/')) : setErrors(user.errors))
     }
 
     return(
         <div className="login">
-            <form onSubmit={handleSubmit} className="login-form">
-                <h2 className="headers">Login!</h2>
-                <br/>
-                <label htmlFor="username">Username:</label>
-                <input
-                    type="text"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                />
-                <br/>
-                <label htmlFor="password">Password:</label>
-                <input
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
-                <br/>
-                <button type="submit">Login</button>
-            </form>
+            <div className="heading">
+                <h2 className="login-header">Login!</h2>
+                <form onSubmit={handleSubmit} action='#'>
+                    <div className="input-group">
+                        <span className="input-group-addon"><i className="fa fa-user"></i></span>
+                        <input
+                            type="text"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                            placeholder='Username'
+                            className="form-control"
+                        />
+                    </div>
+                    <div className="input-group">
+                        <span className="input-group-addon"><i className="fa fa-lock"></i></span>
+                        <input
+                            type="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            placeholder="Password"
+                            className="form-control"
+                        />
+                    </div>
+                        <button type="submit" className="float">Login</button>
+                        <p className="errors">{errors}</p>
+                </form>
+            </div>
         </div>
     )
 

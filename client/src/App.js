@@ -51,7 +51,7 @@ function App() {
       <div>
         <NavBar onLogout={setUser} user={user} />
         <main>
-          <h2>Welcome, {user.username}!</h2>
+          <h2 className='welcomer'>Welcome, {user.username}!</h2>
           <br/>
           <Routes>
             <Route exact path="/songs" element={<SongsContainer songs={songs} user={user} />}></Route>
@@ -66,7 +66,7 @@ function App() {
     return (
       <div>
         <NavBar/>
-        <h2>Please login or signup to view more!</h2>
+        <h2 className='headers'>Please login or signup to view more!</h2>
         <main>
           <Routes>
             <Route exact path="/login" element={<Login onLogin={setUser} />}></Route>
