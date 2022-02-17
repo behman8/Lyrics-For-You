@@ -31,7 +31,7 @@ function SongsContainer({ songs, user }) {
 
     return(
         <div>
-            <h1>Songs</h1>
+            <h1 className="headers">Songs</h1>
             <br/>
             {songs.map(song => <SongCard key={song.id} song={song} user={user} addFavorite={addFavorite} />)}
         </div>

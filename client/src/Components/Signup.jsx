@@ -6,7 +6,7 @@ function Signup({ onLogin }) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [passwordConfirmation, setPasswordConfirmation] = useState("");
-    const [errors, setErrors] = useState("")
+    const [errors, setErrors] = useState([])
     const navigate = useNavigate()
 
     function handleSubmit(event) {
@@ -27,7 +27,7 @@ function Signup({ onLogin }) {
     }
 
     return(
-        <div className="login">
+        <div className="form">
             <div className="heading">
                 <h2 className="login-header">Signup!</h2>
                 <form onSubmit={handleSubmit}>
@@ -65,7 +65,7 @@ function Signup({ onLogin }) {
                     />
                     </div>
                     <button type="submit" className="float">Submit</button>
-                    <p className="errors">{errors}</p>
+                    <p className="errors">{errors.join(", ")}</p>
                 </form>
             </div>
         </div>

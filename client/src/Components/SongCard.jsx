@@ -9,17 +9,19 @@ function SongCard({ song, user, addFavorite }) {
     });
 
     return(
-        <div>
-            <h2>Title:</h2>
-            <NavLink to={`/api/songs/${song.id}`} ><p>{song.title}</p></NavLink>
-            <br/>
-            <h3>Artist:</h3>
-            <p>{song.artist}</p>
-            <br/>
-            <h3>Album:</h3>
-            <p>{song.album}</p>
-            <br/>
-            <button id="favorite-button" type="submit" onClick={(e) => addFavorite(formData)} >❤️</button>
+        <div className="cards">
+            <div className="inner-card">
+                <h2 className="labels">Title:</h2>
+                <NavLink to={`/api/songs/${song.id}`} className="nav"><p className="song-links">{song.title}</p></NavLink>
+                <br/>
+                <h3 className="labels">Artist:</h3>
+                <p className="data">{song.artist}</p>
+                <br/>
+                <h3 className="labels">Album:</h3>
+                <p className="data">{song.album}</p>
+                <br/>
+                <button id="favorite-button" type="submit" onClick={(e) => addFavorite(formData)} >❤️</button>
+            </div>
         </div>
     )
 

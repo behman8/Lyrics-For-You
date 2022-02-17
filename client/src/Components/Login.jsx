@@ -23,7 +23,7 @@ function Login({ onLogin }) {
     }
 
     return(
-        <div className="login">
+        <div className="form">
             <div className="heading">
                 <h2 className="login-header">Login!</h2>
                 <form onSubmit={handleSubmit} action='#'>
