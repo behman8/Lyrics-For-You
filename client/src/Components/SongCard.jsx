@@ -12,7 +12,7 @@ function SongCard({ song, user, addFavorite }) {
         <div className="cards">
             <div className="inner-card">
                 <h2 className="labels">Title:</h2>
-                <NavLink to={`/api/songs/${song.id}`} className="nav"><p className="song-links">{song.title}</p></NavLink>
+                <NavLink to={`/songs/${song.id}`} className="nav"><p className="song-links">{song.title}</p></NavLink>
                 <br/>
                 <h3 className="labels">Artist:</h3>
                 <p className="data">{song.artist}</p>

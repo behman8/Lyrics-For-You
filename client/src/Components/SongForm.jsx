@@ -34,51 +34,68 @@ function SongForm({ addNewSong, user}) {
     };
 
     return(
-        <div>
-            <form className="form" onSubmit={handleSubmit}>
-                <h1>Add Your Own Song and Lyrics Here!</h1>
-                <h3>Title:</h3>
-                    <input
-                        id="title"
-                        type="text"
-                        value={formData["title"]}
-                        onChange={handleChange} 
-                    />
-                    <br/>
-                <h3>Lyrics:</h3>
-                    <input
-                        id="lyrics"
-                        type="text-area"
-                        value={formData["lyrics"]}
-                        onChange={handleChange} 
-                    />
-                    <br/>
-                <h3>Artist:</h3>
-                    <input
-                        id="artist"
-                        type="text"
-                        value={formData["artist"]}
-                        onChange={handleChange} 
-                    />
-                    <br/>
-                <h3>Time:</h3>
-                    <input
-                        id="time"
-                        type="number"
-                        value={formData["time"]}
-                        onChange={handleChange} 
-                    />
-                    <br/>
-                <h3>Album:</h3>
-                    <input
-                        id="album"
-                        type="text"
-                        value={formData["album"]}
-                        onChange={handleChange} 
-                    />
-                    <br/>
-                    <button id="submit-button" type="submit">Submit</button>
-            </form>
+        <div className="form">
+            <div className="heading">
+                <h1 className="login-header">Add Your Song Here!</h1>
+                <form onSubmit={handleSubmit}>
+                    <div className="input-group">
+                        <span className="input-group-addon"><i className="fa fa-user"></i></span>
+                        <input
+                            id="title"
+                            type="text"
+                            value={formData["title"]}
+                            onChange={handleChange}
+                            className="form-control"
+                            placeholder="Title"
+                        />
+                    </div>
+                    <div className="input-group">
+                        <span className="input-group-addon"><i className="fa fa-user"></i></span>
+                        <input
+                            id="lyrics"
+                            type="text-area"
+                            value={formData["lyrics"]}
+                            onChange={handleChange}
+                            className="form-control"
+                            placeholder="Lyrics"
+                        />
+                    </div>
+                    <div className="input-group">
+                        <span className="input-group-addon"><i className="fa fa-user"></i></span>
+                        <input
+                            id="artist"
+                            type="text"
+                            value={formData["artist"]}
+                            onChange={handleChange}
+                            className="form-control"
+                            placeholder="Artist"
+                        />
+                    </div>
+                    <div className="input-group">
+                        <span className="input-group-addon"><i className="fa fa-user"></i></span>
+                        <input
+                            id="time"
+                            type="number"
+                            value={formData["time"]}
+                            onChange={handleChange}
+                            className="form-control"
+                            placeholder="Length in Seconds"
+                        />
+                    </div>
+                    <div className="input-group">
+                        <span className="input-group-addon"><i className="fa fa-user"></i></span>
+                        <input
+                            id="album"
+                            type="text"
+                            value={formData["album"]}
+                            onChange={handleChange}
+                            className="form-control"
+                            placeholder="Album"
+                        />
+                    </div>
+                    <button className="float" type="submit">Submit</button>
+                </form>
+            </div>
         </div>
     )
 
