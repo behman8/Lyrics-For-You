@@ -9,7 +9,7 @@ function SongForm({ addNewSong, user}) {
         title: "",
         lyrics: "",
         artist: "",
-        time: 0,
+        time: "",
         album: "",
         user_id: user.id
     });

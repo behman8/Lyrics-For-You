@@ -10,7 +10,7 @@ Song.destroy_all
 
 puts "Seeding Songs!"
 
-Song.create([{
+Song.create(
     title: "Right Now", 
     lyrics: "You said 'what am I supposed to do?'
         Because I'm drowning in inches of water with you
@@ -59,8 +59,8 @@ Song.create([{
     time: 211, 
     album: "Steady Glow",
     user_id: 1
-},
-{
+)
+Song.create(
     title: "Unrequited Love", 
     lyrics: "Thought by now you would be so goddamn tired of
     Always lying awake from unrequited love
@@ -146,8 +146,8 @@ Song.create([{
     time: 310, 
     album: "Yonder",
     user_id: 1
-},
-{
+)
+Song.create(
     title: "lvl99ROIDMAGE", 
     lyrics: "Holes made by the sun
     Marks on the outside by a knife
@@ -189,8 +189,8 @@ Song.create([{
     time: 201, 
     album: "400LB BACK SQUAT",
     user_id: 1
-},
-{
+)
+Song.create(
     title: "new low", 
     lyrics: "(Million other things)
     (There's a million other things I could have)
@@ -283,6 +283,6 @@ Song.create([{
     time: 296, 
     album: "new low",
     user_id: 1
-}])
+)
 
-puts "Songs seeded!"
+puts "Created #{Song.count} songs."

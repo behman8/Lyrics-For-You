@@ -15,12 +15,12 @@ function App() {
   const [songs, setSongs] = useState([]);
 
   useEffect(() => {
-    fetch("/api/me").then((resp) => {
+    if(!!user)fetch("/api/me").then((resp) => {
       if(resp.ok) {
         resp.json().then((user) => setUser(user));
       }
     });
-  }, []);
+  }, [user]);
 
   useEffect(() => {
     fetch("/api/songs")

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 function SongShow({ songs }) {
-console.log(songs)
     const [song, setSong] = useState([])
     const { id } = useParams()
 
@@ -17,14 +16,21 @@ console.log(songs)
         <div>
             {!!song.id ?
             <div>
-                <h1>{song.title}</h1>
-                <h3>{`by: ${song.artist}`}</h3>
-                <br/>
-                <p>{song.lyrics}</p>
-                <br/>
-                <h3>{`Album: ${song.album}`}</h3>
-                <br/>
-                <h3>{`Length: ${song.time}`}</h3>
+                <div className="headers">
+                    <h2>{song.title}</h2>
+                    <p>{`by: ${song.artist}`}</p>
+                </div>
+                <div className="song-show">
+                    <div className="lyrics">
+                        <p>{song.lyrics}</p>
+                    </div>
+                </div>
+                <div className="headers">
+                    <p>{`Album: ${song.album}`}</p>
+                </div>
+                <div className="headers">
+                    <p>{`Length: ${song.time}`}</p>
+                </div>
             </div>
             :
             <div>

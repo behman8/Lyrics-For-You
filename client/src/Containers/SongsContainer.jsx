@@ -3,31 +3,38 @@ import SongCard from "../Components/SongCard";
 
 function SongsContainer({ songs, user }) {
 
-    const [favorites, setFavorites] = useState();
-    
+    const [favorites, setFavorites] = useState([{song_id: 0, user_id: 0}]);
+
     useEffect(() => {
         fetch("/api/favorites")
             .then((resp) => resp.json())
             .then(data => setFavorites([...data]))
     }, []);
 
-    const addFavorite = (songId) => {
+     const addFavorite = (songId) => {
+         console.log(favorites)
         let params = {...songId}
-        fetch("/api/favorites", {
-            method: "POST",
-            headers: {
-                "Accept": "application/json",
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(params)
-        })
-        .then((resp) => resp.json())
-        .then(songId => {
-            setFavorites(prev => {
-                return [...prev, songId]
-            })
-        })
-    }
+          favorites.map(favorite =>
+            params.song_id !== favorite.song_id
+            ?
+            fetch("/api/favorites", {
+                method: "POST",
+                headers: {
+                    "Accept": "application/json",
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(params)
+                })
+                .then((resp) => resp.json())
+                .then((songId) =>
+                    setFavorites((prev) => {
+                        return [...prev, songId]
+                    })
+            )
+            :
+            null 
+         )
+     }
 
     return(
         <div>

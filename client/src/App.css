@@ -212,3 +212,22 @@ span {
   padding-bottom: 5px;
   text-shadow: 1px 1px 3px
  }
+
+ .song-show {
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-left: 25%;
+  margin-right: 25%;
+  border-style: outset;
+  border-color: #DC143C;
+  background: #696969;
+ }
+
+ .lyrics {
+  font-size: 3ch;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-left: 15%;
+  margin-right: 15%;
+ }
