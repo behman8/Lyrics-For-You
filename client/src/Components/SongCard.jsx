@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 
-function SongCard({ song, user, addFavorite }) {
+function SongCard({ song, user, addFavorite, favorites }) {
 
     const [formData, setFormData] = useState({
         user_id: user.id,
         song_id: song.id
     });
+
+    let foundFavorite = favorites.find(favorite => favorite.song_id === song.id)
 
     return(
         <div className="cards">
@@ -20,7 +22,7 @@ function SongCard({ song, user, addFavorite }) {
                 <h3 className="labels">Album:</h3>
                 <p className="data">{song.album}</p>
                 <br/>
-                <button id="favorite-button" type="submit" onClick={(e) => addFavorite(formData)} >❤️</button>
+                {foundFavorite ? <button className="favorited" id="favorite-button" type="submit" onClick={(e) => addFavorite(formData)} >💖</button> : <button className="not-favorited" id="favorite-button" type="submit" onClick={(e) => addFavorite(formData)} >🖤</button>}
             </div>
         </div>
     )
