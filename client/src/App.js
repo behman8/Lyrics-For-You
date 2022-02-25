@@ -8,11 +8,13 @@ import Login from './Components/Login';
 import Home from './Components/Home';
 import Signup from './Components/Signup';
 import SongForm from './Components/SongForm';
+import FavoritesContainer from './Containers/FavoritesContainer';
 
 function App() {
 
   const [user, setUser] = useState(null)
   const [songs, setSongs] = useState([]);
+  const [favorites, setFavorites] = useState([]);
 
   useEffect(() => {
     if(!!user)fetch("/api/me").then((resp) => {
@@ -46,6 +48,32 @@ function App() {
     })
   }
 
+    useEffect(() => {
+        fetch("/api/favorites")
+            .then((resp) => resp.json())
+            .then(data => setFavorites([...data]))
+    }, []);
+
+    const addFavorite = (songId) => {
+      let params = {...songId}
+      let filteredFavorites = favorites.filter(favorite => params.song_id === favorite.song_id)
+          if(filteredFavorites.length === 0){
+          fetch("/api/favorites", {
+              method: "POST",
+              headers: {
+                  "Accept": "application/json",
+                  "Content-Type": "application/json"
+              },
+              body: JSON.stringify(params)
+              })
+              .then((resp) => resp.json())
+              .then((songId) =>
+                  setFavorites((prev) => {
+                      return [...prev, songId]
+                  })
+          )}
+  };
+
   if(user) {
     return (
       <div>
@@ -54,9 +82,10 @@ function App() {
           <h2 className='welcomer'>Welcome, {user.username}!</h2>
           <br/>
           <Routes>
-            <Route exact path="/songs" element={<SongsContainer songs={songs} user={user} />}></Route>
+            <Route exact path="/songs" element={<SongsContainer songs={songs} user={user} favorites={favorites} addFavorite={addFavorite} />}></Route>
             <Route exact path="/songs/:id" element={<SongShow songs={songs} />}></Route>
             <Route exact path="/songs/new" element={<SongForm addNewSong={addNewSong} user={user} />}></Route>
+            <Route exact path="/favorites" element={<FavoritesContainer favorites={favorites} addFavorite={addFavorite} user={user} />}></Route>
             <Route exact path="/" element={<Home songs={songs} user={user} />}></Route>
           </Routes>
         </main>
