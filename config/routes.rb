@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   scope :api do
-    resources :favorites, only: [:show, :index, :create]
+    resources :favorites, only: [:show, :index, :create, :destroy]
     resources :songs, only: [:show, :index, :create]
     resources :users, only: [:show, :index, :create]
 

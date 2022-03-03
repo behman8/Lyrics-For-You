@@ -23,6 +23,16 @@ class FavoritesController < ApplicationController
         end
     end
 
+    def destroy
+        favorite = find_favorite
+        if favorite
+            favorite.destroy
+            head :no_content
+        else
+            render json: { errors: "Favorite does not exist." }, status: :not_found
+        end
+    end
+
     private
 
     def find_favorite

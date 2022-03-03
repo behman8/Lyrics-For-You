@@ -74,6 +74,18 @@ function App() {
           )}
   };
 
+  const handleDelete = async (id) => {
+    let favoriteDelete = favorites.filter(favorite => favorite.id !== id)
+    setFavorites([...favoriteDelete])
+    let resp = await fetch(`/api/favorites/${id}`, {
+        method: "DELETE",
+        headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+        }
+    })
+  }
+
   if(user) {
     return (
       <div>
@@ -82,7 +94,7 @@ function App() {
           <h2 className='welcomer'>Welcome, {user.username}!</h2>
           <br/>
           <Routes>
-            <Route exact path="/songs" element={<SongsContainer songs={songs} user={user} favorites={favorites} addFavorite={addFavorite} />}></Route>
+            <Route exact path="/songs" element={<SongsContainer songs={songs} user={user} favorites={favorites} addFavorite={addFavorite} handleDelete={handleDelete} />}></Route>
             <Route exact path="/songs/:id" element={<SongShow songs={songs} />}></Route>
             <Route exact path="/songs/new" element={<SongForm addNewSong={addNewSong} user={user} />}></Route>
             <Route exact path="/favorites" element={<FavoritesContainer favorites={favorites} addFavorite={addFavorite} user={user} />}></Route>
