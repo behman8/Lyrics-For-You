@@ -22,7 +22,7 @@ function SongShow({ songs }) {
                 </div>
                 <div className="song-show">
                     <div className="lyrics">
-                        <p>{song.lyrics}</p>
+                        <p>{song.lyrics.join(", ")}</p>
                     </div>
                 </div>
                 <div className="headers">

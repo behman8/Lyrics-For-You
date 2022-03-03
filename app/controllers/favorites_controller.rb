@@ -3,7 +3,7 @@ class FavoritesController < ApplicationController
     def show
         favorite = find_favorite
         if favorite
-            render json: favorite, status: :ok
+            render json: favorite, status: :ok, include: :song, include: :user
         else
             render json: { errors: "Favorite does not exist" }, status: :not_found
         end
@@ -17,7 +17,7 @@ class FavoritesController < ApplicationController
     def create
         favorite = Favorite.create(favorite_params)
         if favorite
-            render json: favorite, status: :created
+            render json: favorite, include: :song, status: :created
         else
             render json: { errors: "Could not create favorite." }, status: :unprocessable_entity
         end
