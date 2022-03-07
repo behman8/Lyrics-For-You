@@ -23,6 +23,16 @@ class SongsController < ApplicationController
         end
     end
 
+    def update
+        song = find_song
+        if song
+            song.update(song_params)
+            render json: song
+        else
+            render json: { errors: "Song not found." }, status: :not_found
+        end
+    end
+
     private
 
     def song_params

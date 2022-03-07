@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   scope :api do
     resources :favorites, only: [:show, :index, :create, :destroy]
-    resources :songs, only: [:show, :index, :create]
+    resources :songs, only: [:show, :index, :create, :update]
     resources :users, only: [:show, :index, :create]
 
     get "/me", to: "users#show"

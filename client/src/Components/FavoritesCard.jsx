@@ -1,12 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
 
-function FavoritesCard({ favorite, user, handleDelete }) {
-
-    const [formData, setFormData] = useState({
-        user_id: user.id,
-        song_id: favorite.song.id
-    });
+function FavoritesCard({ favorite, handleDelete }) {
 
     return(
         <div>

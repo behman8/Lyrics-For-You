@@ -8,7 +8,7 @@ function SongCard({ song, user, addFavorite, favorites, handleDelete }) {
         song_id: song.id
     });
 
-    let foundFavorite = favorites.find(favorite => favorite.song_id === song.id)
+    let foundFavorite = favorites.find(favorite => favorite.user_id === user.id && favorite.song_id === song.id)
 
     return(
         <div className="cards">

@@ -9,6 +9,8 @@ import Home from './Components/Home';
 import Signup from './Components/Signup';
 import SongForm from './Components/SongForm';
 import FavoritesContainer from './Containers/FavoritesContainer';
+import UsersSongsContainer from './Containers/UsersSongsContainer';
+import SongEdit from './Components/SongEdit';
 
 function App() {
 
@@ -84,7 +86,24 @@ function App() {
             "Content-Type": "application/json"
         }
     })
-  }
+  };
+
+  const updateSong = (songData) => {
+    let params = {...songData}
+    let filteredSongs = songs.filter(song => song.id !== songData.id)
+    fetch(`/api/songs/${songData.id}`, {
+      method: "PATCH",
+      headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(params)
+    })
+    .then((resp) => resp.json())
+    .then((songData) => 
+      setSongs([...filteredSongs, songData])
+    )
+  };
 
   if(user) {
     return (
@@ -97,12 +116,14 @@ function App() {
             <Route exact path="/songs" element={<SongsContainer songs={songs} user={user} favorites={favorites} addFavorite={addFavorite} handleDelete={handleDelete} />}></Route>
             <Route exact path="/songs/:id" element={<SongShow songs={songs} />}></Route>
             <Route exact path="/songs/new" element={<SongForm addNewSong={addNewSong} user={user} />}></Route>
+            <Route exact path="/users-songs" element={<UsersSongsContainer user={user} songs={songs} updateSong={updateSong} />}></Route>
+            <Route exact path="/users-songs/edit" element={<SongEdit updateSong={updateSong} />}></Route>
             <Route exact path="/favorites" element={<FavoritesContainer favorites={favorites} addFavorite={addFavorite} user={user} handleDelete={handleDelete} />}></Route>
             <Route exact path="/" element={<Home songs={songs} user={user} />}></Route>
           </Routes>
         </main>
       </div>
-  );
+    );
   } else {
     return (
       <div>

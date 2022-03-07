@@ -6,7 +6,7 @@ function FavoritesContainer({ favorites, addFavorite, user, handleDelete }) {
     return(
         <div>
             <h1 className="headers">Favorites</h1>
-            {favorites.map(favorite => <FavoritesCard key={favorite.id} favorite={favorite} addFavorite={addFavorite} user={user} handleDelete={handleDelete} /> )}
+            {favorites.map(favorite => user.id === favorite.user_id ? <FavoritesCard key={favorite.id} favorite={favorite} addFavorite={addFavorite} user={user} handleDelete={handleDelete} /> : null)}
         </div>
     )
 

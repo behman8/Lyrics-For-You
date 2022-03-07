@@ -22,9 +22,10 @@ function NavBar({ onLogout, user }) {
                             <div className="menu">
                                 <li className="link"><NavLink to="/">Home</NavLink></li>
                                 <li className="link"><NavLink to="/songs">Songs</NavLink></li>
+                                <li className="link"><NavLink to="/users-songs">Yours</NavLink></li>
                                 <li className="link"><NavLink to="/songs/new">Add Song</NavLink></li>
                                 <li className="link"><NavLink to="/favorites">Favorites</NavLink></li>
-                                <button onClick={handleLogout} className="logout-button" >Logout</button>
+                                <button onClick={handleLogout} className="buttons" >Logout</button>
                             </div>
                         </ul>
                     </div>
@@ -49,7 +50,6 @@ function NavBar({ onLogout, user }) {
             </div>
         )
     }
-
 };
 
 export default NavBar;
