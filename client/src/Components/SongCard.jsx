@@ -22,7 +22,8 @@ function SongCard({ song, user, addFavorite, favorites, handleDelete }) {
                 <h3 className="labels">Album:</h3>
                 <p className="data">{song.album}</p>
                 <br/>
-                {foundFavorite ? <button className="favorited" id="favorite-button" onClick={(e) => handleDelete(foundFavorite.id)} >💖</button> : <button className="not-favorited" id="favorite-button" type="submit" onClick={(e) => addFavorite(formData)} >🖤</button>}
+                {foundFavorite ? <button className="favorited" id="favorite-button" onClick={(e) => handleDelete(foundFavorite.id)} >💖</button> 
+                : <button className="not-favorited" id="favorite-button" type="submit" onClick={(e) => addFavorite(formData)} >🖤</button>}
             </div>
         </div>
     )
