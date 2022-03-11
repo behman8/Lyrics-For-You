@@ -1,5 +1,5 @@
 import React from "react";
-import HomeCards from "./HomeCards";
+import HomeCards from "../Components/HomeCards"
 
 function Home({ songs, user }) {
 

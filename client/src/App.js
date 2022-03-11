@@ -5,7 +5,7 @@ import NavBar from './Containers/NavBar';
 import SongsContainer from './Containers/SongsContainer';
 import SongShow from './Components/SongShow';
 import Login from './Components/Login';
-import Home from './Components/Home';
+import Home from './Containers/Home';
 import Signup from './Components/Signup';
 import SongForm from './Components/SongForm';
 import FavoritesContainer from './Containers/FavoritesContainer';
@@ -47,7 +47,7 @@ function App() {
           return [...prev, songData]
       })
     })
-  }
+  };
 
     useEffect(() => {
         fetch("/api/favorites")
