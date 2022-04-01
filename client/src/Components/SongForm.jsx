@@ -1,9 +1,6 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 function SongForm({ addNewSong, user}) {
-
-    const navigate = useNavigate()
 
     const [formData, setFormData] = useState({
         title: "",

@@ -10,7 +10,8 @@ function SongShow({ songs }) {
           let selectedSong = songs.find(song => song.id === Number(id))
           setSong({...selectedSong})
         }
-      }, [setSong, id, songs])
+    }, [setSong, id, songs]);
+
 
     return(
         <div>
@@ -22,7 +23,7 @@ function SongShow({ songs }) {
                 </div>
                 <div className="song-show">
                     <div className="lyrics">
-                        <p>{song.lyrics}</p>
+                        <p className="lyrics-test">{song.lyrics}</p>
                     </div>
                 </div>
                 <div className="headers">

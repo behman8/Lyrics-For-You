@@ -229,9 +229,13 @@ span {
  }
 
  .lyrics {
-  font-size: 3ch;
+  font-size: 20px;
   padding-top: 10px;
   padding-bottom: 10px;
   margin-left: 15%;
   margin-right: 15%;
  }
+
+.lyrics-test {
+  line-height: 50px;
+}
